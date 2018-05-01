@@ -1,0 +1,8 @@
+<?php
+define('TABLE_DB', 'jobs');
+define('JOB_NAME_COLUMN', 'job_name');
+define('JOB_LINK_COLUMN', 'job_link');
+define('JOB_TYPE_COLUMN', 'job_type');
+define('JOB_SALARY_COLUMN', 'job_salary');
+define('JOB_LOCATION_COLUMN', 'job_location');
+define('JOB_COMPANY_COLUMN', 'job_company');

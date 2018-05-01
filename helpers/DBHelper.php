@@ -1,4 +1,5 @@
 <?php
+namespace helpers;
 
 include "config.php";
 
@@ -58,7 +59,7 @@ class DBHelper
 
         $query = "SELECT COUNT(*) AS result FROM ".$table.$where;
         $row = $this->queryOne($query);
-
+        print_r($query);
         return (int)$row['result'];
 
     }
@@ -80,7 +81,7 @@ class DBHelper
             }
         }
 
-        $query = "INSERT INTO $table(".join("','",$fields).") VALUES(".join(",", $values).")";
+        $query = "INSERT INTO $table(".join(",",$fields).") VALUES(".join(",", $values).")";
         print_r($query);
         return mysqli_query($this->conn, $query);
     }
