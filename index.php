@@ -13,7 +13,7 @@ $crawler = new \crawler\JobCrawler();
 //$crawler->getAllTypeJobLinks("https://www.careerlink.vn/", '//div[@id="search-by-category"]/ul/li/a');
 //$crawler->setDataForParseTypeOfJobs("https://vieclam24h.vn/viec-lam-quan-ly", 'div.news-title  a');
 //$crawler->setDataForParseJobItem('div.list-items', 'span.title-blockjob-main a', 'span.title-blockjob-main a', 'span.title-blockjob-sub a', 'span.onecol_province', 'div.note_mucluong');
-$crawler->process('1');
+$crawler->process('3');
 
 //autoload of classes
 function __autoload($className) {

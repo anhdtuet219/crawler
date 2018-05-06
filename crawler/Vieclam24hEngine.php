@@ -14,7 +14,6 @@ use helpers\DBHelper;
 
 define('SEED_URL_DEFAULT', 'https://vieclam24h.vn/viec-lam-quan-ly');
 define('TYPE_JOB_TAG_DEFAULT', 'div.news-title a');
-define('ITEM_TAG_DEFAULT', 'div.list-items');
 define('LINK_TAG_DEFAULT', 'span.title-blockjob-main a');
 define('TITLE_TAG_DEFAULT', 'span.title-blockjob-main a');
 define('COMPANY_TAG_DEFAULT', 'span.title-blockjob-sub a');
@@ -24,43 +23,10 @@ define('LIMIT_DEFAULT', 10);
 
 class Vieclam24hEngine extends AbstractEngine
 {
-    public static $instance;
-
-    //helper using connect database
-    public $dbHelper;
-
-    public $mContext;
-
-    //item tag
-    public $itemTag;
-    //detail of job link html tag
-    public $linkTag;
-    //title of job html tag
-    public $titleTag;
-    //company of job html tag
-    public $companyTag;
-    //location of job html tag
-    public $locationTag;
-    //salary of job html tag
-    public $salaryTag;
-
-    //list type of jobs
-    public $typeJobLinks;
-
-    public $limit;
-
-    public static function getInstance() {
-        if (!isset(self::$instance)) {
-            self::$instance = new Vieclam24hEngine();
-        }
-        return self::$instance;
-    }
-
     public function __construct() {
         parent::__construct();
         $this->seedUrl = SEED_URL_DEFAULT;
         $this->typeJobTag = TYPE_JOB_TAG_DEFAULT;
-        $this->itemTag = $this->handleTag(ITEM_TAG_DEFAULT);
         $this->linkTag = $this->handleTag(LINK_TAG_DEFAULT);
         $this->companyTag = $this->handleTag(COMPANY_TAG_DEFAULT);
         $this->salaryTag = $this->handleTag(SALARY_TAG_DEFAULT);
@@ -75,20 +41,6 @@ class Vieclam24hEngine extends AbstractEngine
         //get all type job links from $seedUrl
         $this->typeJobLinks = $this->getAllTypeJobLinks();
         $this->getJobsAndInsertDb();
-    }
-
-    public function setDataForParseTypeOfJobs($url, $tag) {
-        $this->seedUrl = $url;
-        $this->typeJobTag = $this->handleTag($tag);
-    }
-
-    public function setDataForParseJobItem($itemTag, $linkTag, $titleTag, $companyTag, $locationTag, $salaryTag) {
-        $this->itemTag = $this->handleTag($itemTag);
-        $this->linkTag = $this->handleTag($linkTag);
-        $this->titleTag = $this->handleTag($titleTag);
-        $this->companyTag = $this->handleTag($companyTag);
-        $this->locationTag = $this->handleTag($locationTag);
-        $this->salaryTag = $this->handleTag($salaryTag);
     }
 
     public function findAndDeleteParenthesis($string) {

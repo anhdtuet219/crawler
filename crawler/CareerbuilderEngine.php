@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: anansaj
- * Date: 5/1/2018
- * Time: 7:05 AM
+ * Date: 5/6/2018
+ * Time: 2:25 AM
  */
 
 namespace crawler;
@@ -12,19 +12,18 @@ use DOMDocument;
 use DOMXPath;
 use helpers\DBHelper;
 
-define('SEED_URL_DEFAULT', 'https://www.careerlink.vn');
-define('TYPE_JOB_TAG_DEFAULT', '#search-by-category ul li a');
-define('LINK_TAG_DEFAULT', 'h2.list-group-item-heading a');
-define('TITLE_TAG_DEFAULT', 'h2.list-group-item-heading a');
-define('COMPANY_TAG_DEFAULT', 'div.list-group-item-text p a.text-accent');
-define('LOCATION_TAG_DEFAULT', 'div.list-group-item-text p.priority-data');
-define('SALARY_TAG_DEFAULT', 'div.list-group-item-text div small');
-define('JOB_PAGE_TAG_DEFAULT', 'ul.pagination li a');
-define('LIMIT_DEFAULT', 10);
+define('SEED_URL_DEFAULT', 'https://careerbuilder.vn/tim-viec-lam.html');
+define('TYPE_JOB_TAG_DEFAULT', 'div.groupJob ul li a');
+define('LINK_TAG_DEFAULT', 'h3.job a');
+define('TITLE_TAG_DEFAULT', 'h3.job a');
+define('COMPANY_TAG_DEFAULT', 'p.namecom');
+define('LOCATION_TAG_DEFAULT', 'p.location');
+define('SALARY_TAG_DEFAULT', 'p.salary');
+define('JOB_PAGE_TAG_DEFAULT', 'div.paginationTwoStatus a');
+define('LIMIT_DEFAULT', 150);
 
-class CareerlinkEngine extends AbstractEngine
+class CareerbuilderEngine extends AbstractEngine
 {
-
     public $arrLink;
     public $countLimitArray;
 
@@ -64,6 +63,9 @@ class CareerlinkEngine extends AbstractEngine
             $this->countLimitArray[$i] = 0;
             $this->getJobsFromOneLink($this->findAndDeleteParenthesis($title), $link, $i);
             $i++;
+            if ($i == 2) {
+                return;
+            }
         }
     }
 
@@ -79,7 +81,7 @@ class CareerlinkEngine extends AbstractEngine
         }
 
         //if current is first page, ignoring it because it is crawled
-        if (strpos($link, "?view=headline&page=1") !== false) {
+        if (strpos($link, 'trang-1-vi.html') !== false) {
             return;
         }
 
@@ -101,16 +103,10 @@ class CareerlinkEngine extends AbstractEngine
         foreach ($linkItems as $link) {
             if ($this->countLimitArray[$indexOfTypeJob] < $this->limit) {
                 //if number of jobs less than limit, continuing to crawl
-                $linkItem = 'https://careerlink.vn' . $link->getAttribute('href');
+                $linkItem = $link->getAttribute('href');
                 $titleItem = $titleItems[$i]->nodeValue;
                 $companyItem = $companyItems[$i]->nodeValue;
-                $aTag = $locationItems[$i]->getElementsByTagName('a');
-                $locationItem = $aTag[1]->nodeValue;
-                if ($aTag->length > 2) {
-                    for ($i = 2; $i < $aTag->length; $i++) {
-                        $locationItem .= ', ' . $aTag[$i]->nodeValue;
-                    }
-                }
+                $locationItem = $locationItems[$i]->nodeValue;
                 $salaryItem = $salaryItems[$i]->nodeValue;
                 $i++;
                 //build array to insert to db
@@ -134,13 +130,15 @@ class CareerlinkEngine extends AbstractEngine
         foreach ($result as $res) {
             $subLink = $res->getAttribute("href");
             if (strcmp($subLink, "#") != 0) {
-                $this->getAllJobs($title,"https://www.careerlink.vn" . $subLink, $indexOfTypeJob);
+                $this->getAllJobs($title, $subLink, $indexOfTypeJob);
             }
         }
     }
 
     public function getJobsFromOneLink($title, $link, $indexOfTypeJob) {
         $this->arrLink = array();
+
+        //get all jobs of link not exists on arrLink and access to this link for get sublink in it
         $this->getAllJobs($title, $link, $indexOfTypeJob);
     }
 }

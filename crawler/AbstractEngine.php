@@ -18,6 +18,29 @@ abstract class AbstractEngine
     //type of job html tag
     public $typeJobTag;
 
+    //helper using connect database
+    public $dbHelper;
+
+    public $mContext;
+
+    //job page tag
+    public $jobPageTag;
+    //detail of job link html tag
+    public $linkTag;
+    //title of job html tag
+    public $titleTag;
+    //company of job html tag
+    public $companyTag;
+    //location of job html tag
+    public $locationTag;
+    //salary of job html tag
+    public $salaryTag;
+
+    //list type of jobs
+    public $typeJobLinks;
+
+    public $limit;
+
     private static $_instances = array();
 
     public static function getInstance() {
@@ -44,6 +67,24 @@ abstract class AbstractEngine
         $this->dbHelper = \helpers\DBHelper::instance();
     }
 
+    public function setDataForParseTypeOfJobs($url, $tag) {
+        $this->seedUrl = $url;
+        $this->typeJobTag = $this->handleTag($tag);
+    }
+
+    public function setDataForParseJobItem($linkTag, $titleTag, $companyTag, $locationTag, $salaryTag, $jobPageTag) {
+        $this->jobPageTag = $this->handleTag($jobPageTag);
+        $this->linkTag = $this->handleTag($linkTag);
+        $this->titleTag = $this->handleTag($titleTag);
+        $this->companyTag = $this->handleTag($companyTag);
+        $this->locationTag = $this->handleTag($locationTag);
+        $this->salaryTag = $this->handleTag($salaryTag);
+    }
+
+    public function setLimit($limit) {
+        $this->limit = $limit;
+    }
+
     public function getAllTypeJobLinks() {
         $typeJobInfo = array();
         $links = array();
@@ -60,7 +101,7 @@ abstract class AbstractEngine
             $title = $node->nodeValue;
             if (!filter_var($href, FILTER_VALIDATE_URL)) {
                 $splitSeedUrl = explode('/', $this->seedUrl);
-                $href = $splitSeedUrl[0] . '//' . $splitSeedUrl[2] . '/' . $href;
+                $href = $splitSeedUrl[0] . '//' . $splitSeedUrl[2] . $href;
             }
             if (!in_array($href, $links)) {
                 $links[] = $href;

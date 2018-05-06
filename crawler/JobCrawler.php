@@ -42,10 +42,12 @@ class JobCrawler {
                 $this->engine->process();
                 break;
             case CAREERLINK:
-                //TO DO
+                $this->engine = CareerlinkEngine::getInstance();
+                $this->engine->process();
                 break;
             case CAREERBUILDER:
-                //TO DO
+                $this->engine = CareerbuilderEngine::getInstance();
+                $this->engine->process();
                 break;
         }
     }
