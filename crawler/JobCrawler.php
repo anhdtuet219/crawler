@@ -16,7 +16,7 @@ define('CAREERBUILDER', '3');
 use DOMDocument;
 use DOMXPath;
 
-class JobCrawler {
+class JobCrawlerController {
 
     public static $instance;
 
@@ -25,7 +25,7 @@ class JobCrawler {
 
     public static function getInstance() {
         if (!isset(self::$instance)) {
-            self::$instance = new JobCrawler();
+            self::$instance = new JobCrawlerController();
         }
         return self::$instance;
     }

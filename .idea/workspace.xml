@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2018d971-715f-4485-85e6-9801438d5c2e" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/crawler/CareerbuilderEngine.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawler/AbstractEngine.php" beforeDir="false" afterPath="$PROJECT_DIR$/crawler/AbstractEngine.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/crawler/CareerbuilderEngine.php" beforeDir="false" afterPath="$PROJECT_DIR$/crawler/CareerbuilderEngine.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crawler/CareerlinkEngine.php" beforeDir="false" afterPath="$PROJECT_DIR$/crawler/CareerlinkEngine.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/crawler/JobCrawler.php" beforeDir="false" afterPath="$PROJECT_DIR$/crawler/JobCrawler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/crawler/Vieclam24hEngine.php" beforeDir="false" afterPath="$PROJECT_DIR$/crawler/Vieclam24hEngine.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,17 +20,17 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+            <state relative-caret-position="220">
+              <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JobCrawler.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="JobCrawler.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/crawler/JobCrawler.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="840">
-              <caret line="48" column="51" selection-start-line="48" selection-start-column="51" selection-end-line="48" selection-end-column="51" />
+            <state relative-caret-position="440">
+              <caret line="27" column="56" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
               <folding>
                 <element signature="e#223#239#0#PHP" expanded="true" />
               </folding>
@@ -43,8 +41,8 @@
       <file leaf-file-name="AbstractEngine.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crawler/AbstractEngine.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="124" column="43" selection-start-line="124" selection-start-column="16" selection-end-line="124" selection-end-column="43" />
+            <state relative-caret-position="-47">
+              <caret line="60" column="18" lean-forward="true" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
               <folding>
                 <element signature="e#111#127#0#PHP" expanded="true" />
               </folding>
@@ -64,8 +62,8 @@
       <file leaf-file-name="Vieclam24hEngine.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crawler/Vieclam24hEngine.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1180">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="12" selection-end-column="21" />
+            <state relative-caret-position="860">
+              <caret line="50" column="38" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="38" />
               <folding>
                 <element signature="e#112#128#0#PHP" expanded="true" />
               </folding>
@@ -73,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CareerbuilderEngine.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CareerbuilderEngine.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crawler/CareerbuilderEngine.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+            <state relative-caret-position="320">
+              <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -85,8 +83,8 @@
       <file leaf-file-name="CareerlinkEngine.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/crawler/CareerlinkEngine.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="22" column="25" lean-forward="true" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+            <state relative-caret-position="1000">
+              <caret line="57" column="41" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
               <folding>
                 <element signature="e#111#127#0#PHP" expanded="true" />
               </folding>
@@ -124,10 +122,10 @@
         <option value="$PROJECT_DIR$/crawler/db_config" />
         <option value="$PROJECT_DIR$/crawler/Vieclam24hEngine.php" />
         <option value="$PROJECT_DIR$/crawler/AbstractEngine.php" />
-        <option value="$PROJECT_DIR$/crawler/JobCrawler.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/crawler/CareerlinkEngine.php" />
         <option value="$PROJECT_DIR$/crawler/CareerbuilderEngine.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/crawler/JobCrawler.php" />
       </list>
     </option>
   </component>
@@ -230,18 +228,21 @@
       <workItem from="1525530692987" duration="1388000" />
       <workItem from="1525541655525" duration="5702000" />
       <workItem from="1525588489322" duration="3990000" />
-      <workItem from="1525606751037" duration="1622000" />
+      <workItem from="1525606751037" duration="2745000" />
+      <workItem from="1525614041756" duration="764000" />
+      <workItem from="1525625103673" duration="465000" />
+      <workItem from="1525629121708" duration="1231000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117757000" />
+    <option name="totallyTimeSpent" value="121340000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1546875" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1546875" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -250,7 +251,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32943678" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -265,19 +266,19 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13802083" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -478,27 +479,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crawler/JobCrawler.php">
+    <entry file="file://$PROJECT_DIR$/crawler/CareerbuilderEngine.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="48" column="51" selection-start-line="48" selection-start-column="51" selection-end-line="48" selection-end-column="51" />
-          <folding>
-            <element signature="e#223#239#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="320">
+          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/crawler/CareerlinkEngine.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+        <state relative-caret-position="1000">
+          <caret line="57" column="41" selection-start-line="57" selection-start-column="41" selection-end-line="57" selection-end-column="41" />
+          <folding>
+            <element signature="e#111#127#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/crawler/Vieclam24hEngine.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1180">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="12" selection-end-column="21" />
+        <state relative-caret-position="860">
+          <caret line="50" column="38" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="38" />
           <folding>
             <element signature="e#112#128#0#PHP" expanded="true" />
           </folding>
@@ -507,28 +508,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/crawler/AbstractEngine.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="124" column="43" selection-start-line="124" selection-start-column="16" selection-end-line="124" selection-end-column="43" />
+        <state relative-caret-position="-47">
+          <caret line="60" column="18" lean-forward="true" selection-start-line="60" selection-start-column="18" selection-end-line="60" selection-end-column="18" />
           <folding>
             <element signature="e#111#127#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crawler/CareerlinkEngine.php">
+    <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="22" column="25" lean-forward="true" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
-          <folding>
-            <element signature="e#111#127#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="220">
+          <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/crawler/CareerbuilderEngine.php">
+    <entry file="file://$PROJECT_DIR$/crawler/JobCrawler.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+        <state relative-caret-position="440">
+          <caret line="27" column="56" selection-start-line="27" selection-start-column="56" selection-end-line="27" selection-end-column="56" />
+          <folding>
+            <element signature="e#223#239#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -20,7 +20,8 @@ define('COMPANY_TAG_DEFAULT', 'p.namecom');
 define('LOCATION_TAG_DEFAULT', 'p.location');
 define('SALARY_TAG_DEFAULT', 'p.salary');
 define('JOB_PAGE_TAG_DEFAULT', 'div.paginationTwoStatus a');
-define('LIMIT_DEFAULT', 150);
+define('FIRST_PAGE', 'trang-1-vi.html');
+define('LIMIT_DEFAULT', 10);
 
 class CareerbuilderEngine extends AbstractEngine
 {
@@ -63,9 +64,6 @@ class CareerbuilderEngine extends AbstractEngine
             $this->countLimitArray[$i] = 0;
             $this->getJobsFromOneLink($this->findAndDeleteParenthesis($title), $link, $i);
             $i++;
-            if ($i == 2) {
-                return;
-            }
         }
     }
 
@@ -81,7 +79,7 @@ class CareerbuilderEngine extends AbstractEngine
         }
 
         //if current is first page, ignoring it because it is crawled
-        if (strpos($link, 'trang-1-vi.html') !== false) {
+        if (strpos($link, FIRST_PAGE) !== false) {
             return;
         }
 
@@ -137,7 +135,6 @@ class CareerbuilderEngine extends AbstractEngine
 
     public function getJobsFromOneLink($title, $link, $indexOfTypeJob) {
         $this->arrLink = array();
-
         //get all jobs of link not exists on arrLink and access to this link for get sublink in it
         $this->getAllJobs($title, $link, $indexOfTypeJob);
     }

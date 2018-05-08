@@ -20,6 +20,7 @@ define('COMPANY_TAG_DEFAULT', 'div.list-group-item-text p a.text-accent');
 define('LOCATION_TAG_DEFAULT', 'div.list-group-item-text p.priority-data');
 define('SALARY_TAG_DEFAULT', 'div.list-group-item-text div small');
 define('JOB_PAGE_TAG_DEFAULT', 'ul.pagination li a');
+define('FIRST_PAGE', '?view=headline&page=1');
 define('LIMIT_DEFAULT', 10);
 
 class CareerlinkEngine extends AbstractEngine
@@ -43,8 +44,7 @@ class CareerlinkEngine extends AbstractEngine
     }
 
 
-    public function process()
-    {
+    public function process() {
         //get all type job links from $seedUrl
         $this->typeJobLinks = $this->getAllTypeJobLinks();
         $this->getJobsAndInsertDb();
@@ -55,8 +55,7 @@ class CareerlinkEngine extends AbstractEngine
         return $splitTypeJob[0];
     }
 
-    public function getJobsAndInsertDb()
-    {
+    public function getJobsAndInsertDb() {
         $i = 0;
         foreach ($this->typeJobLinks['links'] as $link) {
             $title = $this->typeJobLinks['titles'][$i];
@@ -79,7 +78,7 @@ class CareerlinkEngine extends AbstractEngine
         }
 
         //if current is first page, ignoring it because it is crawled
-        if (strpos($link, "?view=headline&page=1") !== false) {
+        if (strpos($link, FIRST_PAGE) !== false) {
             return;
         }
 
