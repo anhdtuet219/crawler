@@ -34,19 +34,22 @@ class JobCrawlerController {
 
     }
 
-    public function process($type) {
+    public function process($type, $limit) {
         //get all type job links from $seedUrl
         switch ($type) {
             case VIEC_LAM_24H:
                 $this->engine = Vieclam24hEngine::getInstance();
+                $this->engine->setLimit($limit);
                 $this->engine->process();
                 break;
             case CAREERLINK:
                 $this->engine = CareerlinkEngine::getInstance();
+                $this->engine->setLimit($limit);
                 $this->engine->process();
                 break;
             case CAREERBUILDER:
                 $this->engine = CareerbuilderEngine::getInstance();
+                $this->engine->setLimit($limit);
                 $this->engine->process();
                 break;
         }

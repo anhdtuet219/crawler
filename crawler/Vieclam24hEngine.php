@@ -12,28 +12,28 @@ use DOMDocument;
 use DOMXPath;
 use helpers\DBHelper;
 
-define('SEED_URL_DEFAULT', 'https://vieclam24h.vn/viec-lam-quan-ly');
-define('TYPE_JOB_TAG_DEFAULT', 'div.news-title a');
-define('LINK_TAG_DEFAULT', 'span.title-blockjob-main a');
-define('TITLE_TAG_DEFAULT', 'span.title-blockjob-main a');
-define('COMPANY_TAG_DEFAULT', 'span.title-blockjob-sub a');
-define('LOCATION_TAG_DEFAULT', 'span.onecol_province');
-define('SALARY_TAG_DEFAULT', 'div.note_mucluong');
-define('LIMIT_DEFAULT', 10);
+define('H_SEED_URL_DEFAULT', 'https://vieclam24h.vn/viec-lam-quan-ly');
+define('H_TYPE_JOB_TAG_DEFAULT', 'div.news-title a');
+define('H_LINK_TAG_DEFAULT', 'span.title-blockjob-main a');
+define('H_TITLE_TAG_DEFAULT', 'span.title-blockjob-main a');
+define('H_COMPANY_TAG_DEFAULT', 'span.title-blockjob-sub a');
+define('H_LOCATION_TAG_DEFAULT', 'span.onecol_province');
+define('H_SALARY_TAG_DEFAULT', 'div.note_mucluong');
+define('H_LIMIT_DEFAULT', 10);
 
 class Vieclam24hEngine extends AbstractEngine
 {
     public function __construct() {
         parent::__construct();
-        $this->seedUrl = SEED_URL_DEFAULT;
-        $this->typeJobTag = TYPE_JOB_TAG_DEFAULT;
-        $this->linkTag = $this->handleTag(LINK_TAG_DEFAULT);
-        $this->companyTag = $this->handleTag(COMPANY_TAG_DEFAULT);
-        $this->salaryTag = $this->handleTag(SALARY_TAG_DEFAULT);
-        $this->locationTag = $this->handleTag(LOCATION_TAG_DEFAULT);
-        $this->titleTag = $this->handleTag(TITLE_TAG_DEFAULT);
+        $this->seedUrl = H_SEED_URL_DEFAULT;
+        $this->typeJobTag = H_TYPE_JOB_TAG_DEFAULT;
+        $this->linkTag = $this->handleTag(H_LINK_TAG_DEFAULT);
+        $this->companyTag = $this->handleTag(H_COMPANY_TAG_DEFAULT);
+        $this->salaryTag = $this->handleTag(H_SALARY_TAG_DEFAULT);
+        $this->locationTag = $this->handleTag(H_LOCATION_TAG_DEFAULT);
+        $this->titleTag = $this->handleTag(H_TITLE_TAG_DEFAULT);
         $this->dbHelper = DBHelper::instance();
-        $this->limit = LIMIT_DEFAULT;
+        $this->limit = H_LIMIT_DEFAULT;
     }
 
     public function process()
@@ -116,7 +116,7 @@ class Vieclam24hEngine extends AbstractEngine
                     $arr[JOB_COMPANY_COLUMN] = $companyItem;
                     $arr[JOB_TYPE_COLUMN] = trim(preg_replace('/\s+/', ' ', $title));
                     $arr[JOB_SALARY_COLUMN] = trim(preg_replace('/\s+/', ' ', $salaryItem));
-
+                    $arr[JOB_SOURCE_TYPE] = 1;
                     $this->dbHelper->insert(TABLE_DB, $arr);
                     echo $i;
                 }

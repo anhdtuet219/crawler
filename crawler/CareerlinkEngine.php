@@ -12,16 +12,16 @@ use DOMDocument;
 use DOMXPath;
 use helpers\DBHelper;
 
-define('SEED_URL_DEFAULT', 'https://www.careerlink.vn');
-define('TYPE_JOB_TAG_DEFAULT', '#search-by-category ul li a');
-define('LINK_TAG_DEFAULT', 'h2.list-group-item-heading a');
-define('TITLE_TAG_DEFAULT', 'h2.list-group-item-heading a');
-define('COMPANY_TAG_DEFAULT', 'div.list-group-item-text p a.text-accent');
-define('LOCATION_TAG_DEFAULT', 'div.list-group-item-text p.priority-data');
-define('SALARY_TAG_DEFAULT', 'div.list-group-item-text div small');
-define('JOB_PAGE_TAG_DEFAULT', 'ul.pagination li a');
-define('FIRST_PAGE', '?view=headline&page=1');
-define('LIMIT_DEFAULT', 10);
+define('CL_SEED_URL_DEFAULT', 'https://www.careerlink.vn');
+define('CL_TYPE_JOB_TAG_DEFAULT', '#search-by-category ul li a');
+define('CL_LINK_TAG_DEFAULT', 'h2.list-group-item-heading a');
+define('CL_TITLE_TAG_DEFAULT', 'h2.list-group-item-heading a');
+define('CL_COMPANY_TAG_DEFAULT', 'div.list-group-item-text p a.text-accent');
+define('CL_LOCATION_TAG_DEFAULT', 'div.list-group-item-text p.priority-data');
+define('CL_SALARY_TAG_DEFAULT', 'div.list-group-item-text div small');
+define('CL_JOB_PAGE_TAG_DEFAULT', 'ul.pagination li a');
+define('CL_FIRST_PAGE', '?view=headline&page=1');
+define('CL_LIMIT_DEFAULT', 10);
 
 class CareerlinkEngine extends AbstractEngine
 {
@@ -31,15 +31,15 @@ class CareerlinkEngine extends AbstractEngine
 
     public function __construct() {
         parent::__construct();
-        $this->seedUrl = SEED_URL_DEFAULT;
-        $this->typeJobTag = TYPE_JOB_TAG_DEFAULT;
-        $this->jobPageTag = $this->handleTag(JOB_PAGE_TAG_DEFAULT);
-        $this->linkTag = $this->handleTag(LINK_TAG_DEFAULT);
-        $this->companyTag = $this->handleTag(COMPANY_TAG_DEFAULT);
-        $this->salaryTag = $this->handleTag(SALARY_TAG_DEFAULT);
-        $this->locationTag = $this->handleTag(LOCATION_TAG_DEFAULT);
-        $this->titleTag = $this->handleTag(TITLE_TAG_DEFAULT);
-        $this->limit = LIMIT_DEFAULT;
+        $this->seedUrl = CL_SEED_URL_DEFAULT;
+        $this->typeJobTag = CL_TYPE_JOB_TAG_DEFAULT;
+        $this->jobPageTag = $this->handleTag(CL_JOB_PAGE_TAG_DEFAULT);
+        $this->linkTag = $this->handleTag(CL_LINK_TAG_DEFAULT);
+        $this->companyTag = $this->handleTag(CL_COMPANY_TAG_DEFAULT);
+        $this->salaryTag = $this->handleTag(CL_SALARY_TAG_DEFAULT);
+        $this->locationTag = $this->handleTag(CL_LOCATION_TAG_DEFAULT);
+        $this->titleTag = $this->handleTag(CL_TITLE_TAG_DEFAULT);
+        $this->limit = CL_LIMIT_DEFAULT;
         $this->countLimitArray = array();
     }
 
@@ -78,7 +78,7 @@ class CareerlinkEngine extends AbstractEngine
         }
 
         //if current is first page, ignoring it because it is crawled
-        if (strpos($link, FIRST_PAGE) !== false) {
+        if (strpos($link, CL_FIRST_PAGE) !== false) {
             return;
         }
 
@@ -120,7 +120,7 @@ class CareerlinkEngine extends AbstractEngine
                 $arr[JOB_COMPANY_COLUMN] = $companyItem;
                 $arr[JOB_TYPE_COLUMN] = trim(preg_replace('/\s+/', ' ', $title));
                 $arr[JOB_SALARY_COLUMN] = trim(preg_replace('/\s+/', ' ', $salaryItem));
-
+                $arr[JOB_SOURCE_TYPE] = 2;
                 $this->dbHelper->insert(TABLE_DB, $arr);
                 $this->countLimitArray[$indexOfTypeJob]++;
             }
