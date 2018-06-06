@@ -59,7 +59,7 @@ class DBHelper
 
         $query = "SELECT COUNT(*) AS result FROM ".$table.$where;
         $row = $this->queryOne($query);
-        print_r($query);
+        //print_r($query);
         return (int)$row['result'];
 
     }
@@ -82,7 +82,7 @@ class DBHelper
         }
 
         $query = "INSERT INTO $table(".join(",",$fields).") VALUES(".join(",", $values).")";
-        print_r($query);
+        //print_r($query);
         return mysqli_query($this->conn, $query);
     }
 
@@ -139,6 +139,19 @@ class DBHelper
         }
 
         return $this->query($query);
+    }
+
+    public function delete($table, $whereCondition = array())
+    {
+        $where = '';
+
+        if (!empty($whereCondition)) {
+            $where = $this->where($whereCondition);
+        }
+
+        $query = "DELETE FROM $table $where";
+
+        return $this->execute($query);
     }
 
     public function selectOne($table, $opts = array())

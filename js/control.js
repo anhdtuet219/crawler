@@ -1,4 +1,4 @@
-function openCity(evt, tabName) {
+function changeTab(evt, tabName) {
     $("#example_filter").hide();
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -19,106 +19,88 @@ function openCity(evt, tabName) {
     }
 }
 
-function startCrawl() {
-    $('#preload').fadeIn('fast');
-    $(".preloading").css("display", "block");
-    $('#preload').delay(10000).fadeOut('fast');
-}
-
-function saveInfo() {
-
-}
 
 function on_loadListSettingInfo() {
     
 }
 
 function on_loadListJob(){
-    var arrListJob=[
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"IT", linhvuc:"IT", diaiem:"hanoi", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"},
-        {congviec:"SEO", linhvuc:"SEO", diaiem:"HCM", congty:"mobiwork", mucluong:"500$",hannopHS:"20/4/2018"}
-    ];
-    if(arrListJob.length>0){
+    $.ajax({
+        type: 'GET',
+        url: 'process.php/jobs',
+        beforeSend: function () {
+            console.log("start load list...");
+            $('#preload').fadeIn('fast');
+            $(".preloading").css("display", "block");
+        },
+        success: function (data) {
+            $('#preload').fadeOut('fast');
+            loadData(data);
+        },
+        error: function (e) {
+            console.log(e);
+            $('#preload').fadeOut('fast');
+            alert("Gặp lỗi trong quá trình lấy dữ liệu!");
+        }
+    });
+}
+
+function loadDataOneLine(data, i) {
+    var html = "";
+    html+='<tr>'
+    html+='<td>'+data[i].job_name+'</td>'
+    html+='<td>'+data[i].job_type+'</td>'
+    html+='<td>'+data[i].job_location+'</td>'
+    html+='<td>'+data[i].job_company+'</td>'
+    html+='<td>'+data[i].job_salary+'</td>'
+    html+='<td><a target="_blank" href="' + data[i].job_link + '">Xem chi tiết</a></td>';
+    var pos = data[i].source_id;
+    switch (pos) {
+        case '1':
+            html+='<td>https://vieclam24h.vn/</td>';
+            break;
+        case '2':
+            html+='<td>https://careerlink.vn/</td>';
+            break;
+        case '3':
+            html+='<td>https://careerbuilder.vn/</td>';
+            break;
+    }
+
+    html+='</tr>'
+    console.log(html)
+    return html;
+}
+
+function loadData(data) {
+    if(data.length > 0){
         var html ="";
         html+='<table id="example" class="display" style="table-layout:fixed;">';
         html+='            <thead>';
         html+='                <tr>';
-        html+='                    <th>Job name</th>';
-        html+='                    <th>Field</th>';
-        html+='                    <th>location</th>';
-        html+='                    <th>Company</th>';
-        html+='                    <th>Salary</th>';
-        html+='                    <th>Show detail</th>';
+        html+='                    <th>Vị trí</th>';
+        html+='                    <th>Ngành nghề</th>';
+        html+='                    <th>Địa điểm</th>';
+        html+='                    <th>Công ty</th>';
+        html+='                    <th>Mức lương</th>';
+        html+='                    <th>Xem chi tiết</th>';
+        html+='                    <th>Nguồn</th>';
         html+='                </tr>';
         html+='            </thead>';
         html+='            <tbody id="listJob-tbody">';
-        for(var i=0;i<arrListJob.length;i++){
-            html+='<tr onclick="on_detailJob()">'
-            html+='<td>'+arrListJob[i].congviec+'</td>'
-            html+='<td>'+arrListJob[i].linhvuc+'</td>'
-            html+='<td>'+arrListJob[i].diaiem+'</td>'
-            html+='<td>'+arrListJob[i].congty+'</td>'
-            html+='<td>'+arrListJob[i].mucluong+'</td>'
-            html+='<td>'+arrListJob[i].hannopHS+'</td>'
-            html+='</tr>'
+        for(var i = 0; i<data.length; i++){
+            html += loadDataOneLine(data, i);
         }
         html+='            </tbody>';
         html+='            <tfoot>';
         html+='                <tr>';
-        html+='                    <th>Job name</th>';
-        html+='                    <th>Field</th>';
-        html+='                    <th>location</th>';
-        html+='                    <th>Company</th>';
-        html+='                    <th>Salary</th>';
-        html+='                    <th>Show detail</th>';
+        html+='                    <th>Vị trí</th>';
+        html+='                    <th>Ngành nghề</th>';
+        html+='                    <th>Địa điểm</th>';
+        html+='                    <th>Công ty</th>';
+        html+='                    <th>Mức lương</th>';
+        html+='                    <th>Xem chi tiết</th>';
+        html+='                    <th>Nguồn</th>';
         html+='                </tr>';
         html+='            </tfoot>';
         html+='        </table>';
@@ -128,16 +110,29 @@ function on_loadListJob(){
             // Setup - add a text input to each footer cell
             $('#example tfoot th').each( function () {
                 var title = $(this).text();
-                $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+                $(this).html( '<input type="text" placeholder="Tìm kiếm '+title+'" />' );
             } );
-         
+
             // DataTable
-            var table = $('#example').DataTable();
-         
+            var table = $('#example').DataTable({
+                "order": [],
+                "language": {
+                    "lengthMenu": "Hiển thị _MENU_ bản ghi trong một trang",
+                    "zeroRecords": "Không có dữ liệu",
+                    "info": "_PAGE_/_PAGES_",
+                    "infoEmpty": "Không có dữ liệu",
+                    "infoFiltered": "(Lọc từ _MAX_ tổng bản ghi)",
+                    "paginate": {
+                        "next":       "Trang tiếp",
+                        "previous":   "Trang trước"
+                    },
+                }
+            });
+
             // Apply the search
             table.columns().every( function () {
                 var that = this;
-         
+
                 $( 'input', this.footer() ).on( 'keyup change', function () {
                     if ( that.search() !== this.value ) {
                         that
@@ -146,12 +141,10 @@ function on_loadListJob(){
                     }
                 } );
             } );
+
+            $('#example_filter').css("display", "none");
+            $('#example_info').css("display", "none");
+
         } );
     }
-
-
-}
-
-function on_detailJob() {
-
 }

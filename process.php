@@ -27,16 +27,11 @@ $app->post('/jobs', function () use ($app) {
     echoResponse(200, $response);
 });
 
-//
-//include "helpers/DBHelper.php";
-//header("content-type: text/html; charset=UTF-8");
-//set_time_limit(2147483647);
-//$crawler = new \crawler\JobCrawlerController();
-////$crawler->getAllTypeJobLinks("https://www.careerlink.vn/", '//div[@id="search-by-category"]/ul/li/a');
-////$crawler->setDataForParseTypeOfJobs("https://vieclam24h.vn/viec-lam-quan-ly", 'div.news-title  a');
-////$crawler->setDataForParseJobItem('div.list-items', 'span.title-blockjob-main a', 'span.title-blockjob-main a', 'span.title-blockjob-sub a', 'span.onecol_province', 'div.note_mucluong');
-//$crawler->process('3');
-//
+$app->get('/jobs', function () use ($app) {
+    $dbHelper = \helpers\DBHelper::instance();
+    $response = $dbHelper->select('jobs');
+    echoResponse(200, $response);
+});
 
 function echoResponse($status_code, $response) {
     $app = \Slim\Slim::getInstance();

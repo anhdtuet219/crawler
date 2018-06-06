@@ -38,6 +38,10 @@ class Vieclam24hEngine extends AbstractEngine
 
     public function process()
     {
+        //delete all before records
+        $condition = array();
+        $condition[JOB_SOURCE_TYPE] = H_SOURCE_ID;
+        $this->dbHelper->delete(TABLE_DB, $condition);
         //get all type job links from $seedUrl
         $this->typeJobLinks = $this->getAllTypeJobLinks();
         $this->getJobsAndInsertDb();
@@ -51,7 +55,7 @@ class Vieclam24hEngine extends AbstractEngine
     public function getJobsAndInsertDb()
     {
         $i = 0;
-        print_r($this->typeJobLinks);
+        //print_r($this->typeJobLinks);
         foreach ($this->typeJobLinks['links'] as $link) {
             $title = $this->typeJobLinks['titles'][$i];
             $this->getJobsFromOneLink($this->findAndDeleteParenthesis($title), $link);
@@ -89,7 +93,7 @@ class Vieclam24hEngine extends AbstractEngine
                         $urlRebuild .= $param . "&";
                     }
                 }
-                print_r($urlRebuild);
+                //print_r($urlRebuild);
                 //getListJob
                 $jobHtml = @file_get_contents($urlRebuild,0, $this->mContext);
                 $html_data  = mb_convert_encoding($jobHtml , 'HTML-ENTITIES', 'UTF-8');
@@ -118,7 +122,6 @@ class Vieclam24hEngine extends AbstractEngine
                     $arr[JOB_SALARY_COLUMN] = trim(preg_replace('/\s+/', ' ', $salaryItem));
                     $arr[JOB_SOURCE_TYPE] = 1;
                     $this->dbHelper->insert(TABLE_DB, $arr);
-                    echo $i;
                 }
                 break;
             }

@@ -21,15 +21,15 @@
     ?>
 
     <div class="tab">
-        <button class="tablinks active" onclick="openCity(event, 'crawler')">Lấy danh sách công việc</button>
-        <button class="tablinks" onclick="openCity(event, 'listJob')">Danh sách việc làm</button>
+        <button class="tablinks active" onclick="changeTab(event, 'crawler')">Lấy danh sách công việc</button>
+        <button class="tablinks" onclick="changeTab(event, 'listJob')">Danh sách việc làm</button>
     </div>
     <div id="background">
         <div id="background-inside">
             <div id="crawler" class="tabcontent">
                 <h2>Lấy danh sách công việc</h2>
                 <br>
-                <form name="get-jobs-form" action="process.php/jobs" method="post">
+                <form name="get-jobs-form">
                     <div class="form-group" >
                         <label for="source-get-jobs">Lựa chọn nguồn lấy tin:</label>
                         <select class="form-control" name="source" id="source-get-jobs">
@@ -68,6 +68,31 @@
     tablinks = document.getElementsByClassName("tablinks");
     document.getElementById('crawler').style.display = "block";
 
+    $(function() {
+        var form = $('form');
+        form.submit(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: 'process.php/jobs',
+                data: form.serialize(),
+                beforeSend: function () {
+                    console.log("start crawling...");
+                    $('#preload').fadeIn('fast');
+                    $(".preloading").css("display", "block");
+                },
+                success: function (data) {
+                    $('#preload').fadeOut('fast');
+                    alert("Lấy dữ liệu thành công!");
+                },
+                error: function (e) {
+                    console.log(e);
+                    $('#preload').fadeOut('fast');
+                    alert("Gặp lỗi trong quá trình lấy dữ liệu!");
+                }
+            });
+        });
+    })
 </script>
 
 <?php

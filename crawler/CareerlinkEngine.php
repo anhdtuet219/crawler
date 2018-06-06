@@ -45,6 +45,10 @@ class CareerlinkEngine extends AbstractEngine
 
 
     public function process() {
+        //delete all before records
+        $condition = array();
+        $condition[JOB_SOURCE_TYPE] = CAREERLINK_SOURCE_ID;
+        $this->dbHelper->delete(TABLE_DB, $condition);
         //get all type job links from $seedUrl
         $this->typeJobLinks = $this->getAllTypeJobLinks();
         $this->getJobsAndInsertDb();
