@@ -1,3 +1,6 @@
+//check time to reload list jobs
+var reload = true;
+
 function changeTab(evt, tabName) {
     $("#example_filter").hide();
     var i, tabcontent, tablinks;
@@ -12,37 +15,37 @@ function changeTab(evt, tabName) {
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
     if (tabName === 'crawler') {
-        on_loadListSettingInfo();
+        
     }
     else if (tabName === 'listJob') {
         on_loadListJob();
     }
 }
 
-
-function on_loadListSettingInfo() {
-    
-}
-
 function on_loadListJob(){
-    $.ajax({
-        type: 'GET',
-        url: 'process.php/jobs',
-        beforeSend: function () {
-            console.log("start load list...");
-            $('#preload').fadeIn('fast');
-            $(".preloading").css("display", "block");
-        },
-        success: function (data) {
-            $('#preload').fadeOut('fast');
-            loadData(data);
-        },
-        error: function (e) {
-            console.log(e);
-            $('#preload').fadeOut('fast');
-            alert("Gặp lỗi trong quá trình lấy dữ liệu!");
-        }
-    });
+    console.log(reload)
+    if (reload) {
+        reload = false;
+        $.ajax({
+            type: 'GET',
+            url: 'process.php/jobs',
+            beforeSend: function () {
+                console.log("start load list...");
+                $('#preload').fadeIn('fast');
+                $(".preloading").css("display", "block");
+            },
+            success: function (data) {
+                $('#preload').fadeOut('fast');
+                loadData(data);
+            },
+            error: function (e) {
+                console.log(e);
+                $('#preload').fadeOut('fast');
+                alert("Gặp lỗi trong quá trình lấy dữ liệu!");
+            }
+        });
+    }
+
 }
 
 function loadDataOneLine(data, i) {
@@ -67,8 +70,7 @@ function loadDataOneLine(data, i) {
             break;
     }
 
-    html+='</tr>'
-    console.log(html)
+    html+='</tr>';
     return html;
 }
 
@@ -99,7 +101,7 @@ function loadData(data) {
         html+='                    <th>Địa điểm</th>';
         html+='                    <th>Công ty</th>';
         html+='                    <th>Mức lương</th>';
-        html+='                    <th>Xem chi tiết</th>';
+        html+='                    <th></th>';
         html+='                    <th>Nguồn</th>';
         html+='                </tr>';
         html+='            </tfoot>';
@@ -108,26 +110,40 @@ function loadData(data) {
 
         $(document).ready(function() {
             // Setup - add a text input to each footer cell
-            $('#example tfoot th').each( function () {
-                var title = $(this).text();
-                $(this).html( '<input type="text" placeholder="Tìm kiếm '+title+'" />' );
+            $('#example tfoot th').each( function (index) {
+                if (index !== 5) {
+                    var title = $(this).text();
+                    $(this).html( '<input type="text" placeholder="Tìm kiếm '+title+'" />' );
+                }
             } );
 
             // DataTable
             var table = $('#example').DataTable({
                 "order": [],
                 "language": {
-                    "lengthMenu": "Hiển thị _MENU_ bản ghi trong một trang",
+                    "lengthMenu": "Hiển thị _MENU_ công việc trong một trang",
                     "zeroRecords": "Không có dữ liệu",
-                    "info": "_PAGE_/_PAGES_",
+                    "info": "Trang _PAGE_/_PAGES_",
                     "infoEmpty": "Không có dữ liệu",
                     "infoFiltered": "(Lọc từ _MAX_ tổng bản ghi)",
                     "paginate": {
                         "next":       "Trang tiếp",
-                        "previous":   "Trang trước"
+                        "previous":   "Trang trước",
+                        "first":      "Trang đầu",
+                        "last":       "Trang cuối"
                     },
-                }
+                },
+                rowReorder: {
+                    selector: 'td:nth-child(2)'
+                },
+                responsive: true,
+                "scrollX": true,
+                "scrollXollapse": true,
             });
+
+            if ($.fn.DataTable.isDataTable( '#example' )) {
+                table.columns.adjust();
+            }
 
             // Apply the search
             table.columns().every( function () {
@@ -143,7 +159,8 @@ function loadData(data) {
             } );
 
             $('#example_filter').css("display", "none");
-            $('#example_info').css("display", "none");
+            // $('#example_info').css("display", "none");
+
 
         } );
     }

@@ -50,15 +50,18 @@
 
             <div id="listJob" class="tabcontent">
             </div>
-            <div id="id-loading" class="preloading" style="display: none">
-                <div id="preload" class="preload-container text-center">
-                    <span class="glyphicon glyphicon-repeat preload-icon rotating"></span>
-                </div>
-            </div>
+        </div>
+    </div>
+    <div id="id-loading" class="preloading" style="display: none">
+        <div id="preload" class="preload-container">
+            <span class="preload-icon rotating">
+                <img src="images/loading.png" width="100" height="100"/>
+            </span>
         </div>
     </div>
 </body>
 <script>
+
     $("#example_filter").hide();
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
@@ -83,11 +86,13 @@
                 },
                 success: function (data) {
                     $('#preload').fadeOut('fast');
+                    reload = true;
                     alert("Lấy dữ liệu thành công!");
                 },
                 error: function (e) {
                     console.log(e);
                     $('#preload').fadeOut('fast');
+                    reload = true;
                     alert("Gặp lỗi trong quá trình lấy dữ liệu!");
                 }
             });
