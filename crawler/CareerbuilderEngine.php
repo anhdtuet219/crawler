@@ -12,17 +12,6 @@ use DOMDocument;
 use DOMXPath;
 use helpers\DBHelper;
 
-define('CB_SEED_URL_DEFAULT', 'https://careerbuilder.vn/tim-viec-lam.html');
-define('CB_TYPE_JOB_TAG_DEFAULT', 'div.groupJob ul li a');
-define('CB_LINK_TAG_DEFAULT', 'h3.job a');
-define('CB_TITLE_TAG_DEFAULT', 'h3.job a');
-define('CB_COMPANY_TAG_DEFAULT', 'p.namecom');
-define('CB_LOCATION_TAG_DEFAULT', 'p.location');
-define('CB_SALARY_TAG_DEFAULT', 'p.salary');
-define('CB_JOB_PAGE_TAG_DEFAULT', 'div.paginationTwoStatus a');
-define('CB_FIRST_PAGE', 'trang-1-vi.html');
-define('CB_LIMIT_DEFAULT', 10);
-
 class CareerbuilderEngine extends AbstractEngine
 {
     public $arrLink;
@@ -30,15 +19,6 @@ class CareerbuilderEngine extends AbstractEngine
 
     public function __construct() {
         parent::__construct();
-        $this->seedUrl = CB_SEED_URL_DEFAULT;
-        $this->typeJobTag = CB_TYPE_JOB_TAG_DEFAULT;
-        $this->jobPageTag = $this->handleTag(CB_JOB_PAGE_TAG_DEFAULT);
-        $this->linkTag = $this->handleTag(CB_LINK_TAG_DEFAULT);
-        $this->companyTag = $this->handleTag(CB_COMPANY_TAG_DEFAULT);
-        $this->salaryTag = $this->handleTag(CB_SALARY_TAG_DEFAULT);
-        $this->locationTag = $this->handleTag(CB_LOCATION_TAG_DEFAULT);
-        $this->titleTag = $this->handleTag(CB_TITLE_TAG_DEFAULT);
-        $this->limit = CB_LIMIT_DEFAULT;
         $this->countLimitArray = array();
     }
 
@@ -47,7 +27,7 @@ class CareerbuilderEngine extends AbstractEngine
     {
         //delete all before records
         $condition = array();
-        $condition[JOB_SOURCE_TYPE] = CAREERBUILDER_SOURCE_ID;
+        $condition[JOB_SOURCE_TYPE] = $this->sourceId;
         $this->dbHelper->delete(TABLE_DB, $condition);
         //get all type job links from $seedUrl
         $this->typeJobLinks = $this->getAllTypeJobLinks();
@@ -83,7 +63,7 @@ class CareerbuilderEngine extends AbstractEngine
         }
 
         //if current is first page, ignoring it because it is crawled
-        if (strpos($link, CB_FIRST_PAGE) !== false) {
+        if (strpos($link, $this->firstPage) !== false) {
             return;
         }
 
@@ -119,7 +99,7 @@ class CareerbuilderEngine extends AbstractEngine
                 $arr[JOB_COMPANY_COLUMN] = $companyItem;
                 $arr[JOB_TYPE_COLUMN] = trim(preg_replace('/\s+/', ' ', $title));
                 $arr[JOB_SALARY_COLUMN] = trim(preg_replace('/\s+/', ' ', $salaryItem));
-                $arr[JOB_SOURCE_TYPE] = 3;
+                $arr[JOB_SOURCE_TYPE] = $this->sourceId;
                 $this->dbHelper->insert(TABLE_DB, $arr);
                 $this->countLimitArray[$indexOfTypeJob]++;
             }

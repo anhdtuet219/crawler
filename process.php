@@ -33,6 +33,21 @@ $app->get('/jobs', function () use ($app) {
     echoResponse(200, $response);
 });
 
+$app->get('/sources', function () use ($app) {
+    $dbHelper = \helpers\DBHelper::instance();
+    if (isset($_GET['source_id'])) {
+        $where = array();
+        $pair = array();
+        $pair['source_id'] = $_GET['source_id'];
+        $where['where'] = $pair;
+        $response = $dbHelper->select('sources', $where);
+    }
+    else {
+        $response = $dbHelper->select('sources');
+    }
+    echoResponse(200, $response);
+});
+
 function echoResponse($status_code, $response) {
     $app = \Slim\Slim::getInstance();
     // Http response code

@@ -9,7 +9,6 @@
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/control.js"></script>
 </head>
 
 <body>
@@ -32,10 +31,7 @@
                 <form name="get-jobs-form">
                     <div class="form-group" >
                         <label for="source-get-jobs">Lựa chọn nguồn lấy tin:</label>
-                        <select class="form-control" name="source" id="source-get-jobs">
-                            <option value="1">https://vieclam24h.vn/</option>
-                            <option value="2">https://www.careerlink.vn/</option>
-                            <option value="3">https://careerbuilder.vn/</option>
+                        <select class="form-control" name="source" id="source-get-jobs" required="true">
                         </select>
                         <br>
                         <label for="limit-get-jobs">Giới hạn số công việc lấy được của mỗi ngành nghề: </label>
@@ -45,7 +41,7 @@
                     </div>
                 </form>
             </div>
-                
+
             <!--End setting 1-->
 
             <div id="listJob" class="tabcontent">
@@ -59,6 +55,8 @@
             </span>
         </div>
     </div>
+
+    <script src="js/control.js"></script>
 </body>
 <script>
 
@@ -71,7 +69,33 @@
     tablinks = document.getElementsByClassName("tablinks");
     document.getElementById('crawler').style.display = "block";
 
+    $(document).ready(function() {
+        //append options to sources dropdown list
+        var selectSource = document.getElementById('source-get-jobs');
+        $.ajax({
+            type: 'GET',
+            url: 'process.php/sources',
+            beforeSend: function() {
+                //to do
+                console.log("Starting to get option for form");
+            },
+            success: function(data) {
+                //create option and add to select
+                for (var i = 0; i < data.length; i++) {
+                    var option = document.createElement('option');
+                    option.value = data[i].source_id;
+                    option.text = data[i].source_name;
+                    selectSource.appendChild(option);
+                }
+            },
+            error: function() {
+                console.log("Network or api is Failed")
+            }
+        });
+    });
+
     $(function() {
+        //handle submit form event
         var form = $('form');
         form.submit(function(e) {
             e.preventDefault();

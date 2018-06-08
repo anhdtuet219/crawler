@@ -13,6 +13,8 @@ use DOMXPath;
 abstract class AbstractEngine
 {
 
+    public $sourceId;
+    public $sourceName;
     //link to list type of jobs
     public $seedUrl;
     //type of job html tag
@@ -35,6 +37,9 @@ abstract class AbstractEngine
     public $locationTag;
     //salary of job html tag
     public $salaryTag;
+
+    //first page
+    public $firstPage;
 
     //list type of jobs
     public $typeJobLinks;
@@ -67,18 +72,22 @@ abstract class AbstractEngine
         $this->dbHelper = \helpers\DBHelper::instance();
     }
 
-    public function setDataForParseTypeOfJobs($url, $tag) {
-        $this->seedUrl = $url;
-        $this->typeJobTag = $this->handleTag($tag);
-    }
+    public function setInfoEngine($info) {
+        $this->sourceId = $info['source_id'];
+        $this->sourceName = $info['source_name'];
+        //get job type
+        $this->seedUrl = $info['source_seed_url'];
+        $this->typeJobTag = $this->handleTag($info['source_type_job_tag']);
 
-    public function setDataForParseJobItem($linkTag, $titleTag, $companyTag, $locationTag, $salaryTag, $jobPageTag) {
-        $this->jobPageTag = $this->handleTag($jobPageTag);
-        $this->linkTag = $this->handleTag($linkTag);
-        $this->titleTag = $this->handleTag($titleTag);
-        $this->companyTag = $this->handleTag($companyTag);
-        $this->locationTag = $this->handleTag($locationTag);
-        $this->salaryTag = $this->handleTag($salaryTag);
+        //get job item
+        $this->jobPageTag = $this->handleTag($info['source_job_page_tag']);
+        $this->linkTag = $this->handleTag($info['source_link_tag']);
+        $this->titleTag = $this->handleTag($info['source_title_tag']);
+        $this->companyTag = $this->handleTag($info['source_company_tag']);
+        $this->locationTag = $this->handleTag($info['source_location_tag']);
+        $this->salaryTag = $this->handleTag($info['source_salary_tag']);
+
+        $this->firstPage = $info['source_first_page'];
     }
 
     public function setLimit($limit) {

@@ -15,7 +15,7 @@ function changeTab(evt, tabName) {
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
     if (tabName === 'crawler') {
-        
+
     }
     else if (tabName === 'listJob') {
         on_loadListJob();
